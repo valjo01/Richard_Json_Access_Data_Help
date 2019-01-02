@@ -10,25 +10,6 @@ import UIKit
 
 class QuizVC: UIViewController {
     
-    struct Question: Decodable {
-        
-        let ID: String?
-        let Frage: String?
-        let Antwort1: String?
-        let Antwort2: String?
-        let Antwort3: String?
-        let Antwort4: String?
-        let Correct: String?
-        let Notiz: String?
-        let LernsektorID: String?
-        let LerneinheitID: String?
-        let LernbereichID: String?
-        let SchwierigkeitID: String?
-        let Redakteur: String?
-        let created_at: String?
-        
-    }
-    
     // Outlets
     @IBOutlet weak var questionTextOutlet: UILabel!
     @IBOutlet weak var btnOutlet: UIButton!
@@ -38,64 +19,62 @@ class QuizVC: UIViewController {
     @IBAction func nextQuestionBtnAction(_ sender: UIButton) {
     }
     
+    // MARK:-- let & var
+    var countOfQuestions = 0
+    
+    // var questionBank = QuestionBank()
+    
+    
+    // ALTERNATIVE ALS OBJEKTE ToDo
 
+    var questionBank : [Question] = []
+    
+    var questionsJsonVar: [Question] = []
+    static var questionObj : [Question] = []
+    var counterForQuestionsJsonVarTest = 0
+    var randNumber = 1
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // MARK:-- let & var
-        let arrayQuestions = QuestionBank()
-        
-        
-        
         
         // MARK:- JSON
         // JSON-----------------------------------------------------------------
         let url = "https://redaktion.pflegonaut.de/service.php"
         let urlObj = URL(string: url)
         
-        URLSession.shared.dataTask(with: urlObj!) { (data, response, error) in
-            do {
-                var questionsJsonVar = try JSONDecoder().decode([Question].self, from: data!)
-                //Ausgabe einer Frage
-                print(questionsJsonVar[1].Frage!)
-                
-                // Anzahl der Fragen
-                let countQuestion = questionsJsonVar.count - 1
-                print("Anzahl entspricht \(countQuestion)")
-                for index in 0...countQuestion {
-                    var c = 1
-                    print(c)
-                    c = c + 1
+        func jsonDataRequest () -> [Question]? {
+            URLSession.shared.dataTask(with: urlObj!) { (data, response, error) in
+                do {
                     
-                }
-                
-                // Ausgabe aller questionsJsonVar
-                for i in questionsJsonVar {
-                    print(i)
-                }
-                
-                
-                
+                    // Json to Array
+                    self.questionsJsonVar = try JSONDecoder().decode([Question].self, from: data!)
+                    self.countOfQuestions = self.questionsJsonVar.count
+                    
 
-                
-            } catch {
-                print("we got an error")
-            }
-            }.resume()
+
+                    DispatchQueue.main.async{
+                        return self.questionsJsonVar
+                    }
+                    
+                } catch {
+                    print(error)
+                }
+                }.resume()
+            return nil
+        }
         // JSON---------------------------------------------------------------
         
         // MARK:-- OutletConnection
+        jsonDataRequest()
         
-        
-        
-        
-        
+        // -- Randomize Question Outlet
+        let randNumber = Int.random(in: 1 ... self.countOfQuestions)
+        print(self.questionsJsonVar[randNumber].Frage)
+        questionTextOutlet.text = questionsJsonVar[randNumber].Frage
         
         
 
         // Do any additional setup after loading the view.
     }
-    
-
     
 }
