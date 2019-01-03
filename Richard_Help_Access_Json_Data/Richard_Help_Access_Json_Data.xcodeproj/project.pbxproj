@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A71AD49721DA6410008BAD5A /* BibliothekVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71AD49621DA6410008BAD5A /* BibliothekVC.swift */; };
+		A71AD49A21DA657A008BAD5A /* QuestionCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A71AD49821DA657A008BAD5A /* QuestionCoreData.xcdatamodeld */; };
+		A71AD49C21DA6D7C008BAD5A /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71AD49B21DA6D7C008BAD5A /* CoreDataService.swift */; };
 		A73B9C1221CA50C50091D952 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73B9C1121CA50C50091D952 /* AppDelegate.swift */; };
 		A73B9C1721CA50C50091D952 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A73B9C1521CA50C50091D952 /* Main.storyboard */; };
 		A73B9C1921CA50C90091D952 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A73B9C1821CA50C90091D952 /* Assets.xcassets */; };
@@ -17,6 +20,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A71AD49621DA6410008BAD5A /* BibliothekVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BibliothekVC.swift; sourceTree = "<group>"; };
+		A71AD49921DA657A008BAD5A /* QuestionCoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = QuestionCoreData.xcdatamodel; sourceTree = "<group>"; };
+		A71AD49B21DA6D7C008BAD5A /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
 		A73B9C0E21CA50C50091D952 /* Richard_Help_Access_Json_Data.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Richard_Help_Access_Json_Data.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A73B9C1121CA50C50091D952 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A73B9C1621CA50C50091D952 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -59,7 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				A73B9C2A21CA54AB0091D952 /* View */,
-				A73B9C2721CA53290091D952 /* Modal */,
+				A73B9C2721CA53290091D952 /* Model */,
 				A73B9C1121CA50C50091D952 /* AppDelegate.swift */,
 				A73B9C1521CA50C50091D952 /* Main.storyboard */,
 				A73B9C1821CA50C90091D952 /* Assets.xcassets */,
@@ -69,19 +75,22 @@
 			path = Richard_Help_Access_Json_Data;
 			sourceTree = "<group>";
 		};
-		A73B9C2721CA53290091D952 /* Modal */ = {
+		A73B9C2721CA53290091D952 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				A73B9C2321CA53020091D952 /* Question.swift */,
 				A73B9C2521CA530B0091D952 /* QuestionBank.swift */,
+				A71AD49821DA657A008BAD5A /* QuestionCoreData.xcdatamodeld */,
+				A71AD49B21DA6D7C008BAD5A /* CoreDataService.swift */,
 			);
-			path = Modal;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		A73B9C2A21CA54AB0091D952 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				A73B9C2821CA53440091D952 /* QuizVC.swift */,
+				A71AD49621DA6410008BAD5A /* BibliothekVC.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -157,6 +166,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A71AD49C21DA6D7C008BAD5A /* CoreDataService.swift in Sources */,
+				A71AD49A21DA657A008BAD5A /* QuestionCoreData.xcdatamodeld in Sources */,
+				A71AD49721DA6410008BAD5A /* BibliothekVC.swift in Sources */,
 				A73B9C2421CA53020091D952 /* Question.swift in Sources */,
 				A73B9C2921CA53440091D952 /* QuizVC.swift in Sources */,
 				A73B9C2621CA530B0091D952 /* QuestionBank.swift in Sources */,
@@ -360,6 +372,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		A71AD49821DA657A008BAD5A /* QuestionCoreData.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A71AD49921DA657A008BAD5A /* QuestionCoreData.xcdatamodel */,
+			);
+			currentVersion = A71AD49921DA657A008BAD5A /* QuestionCoreData.xcdatamodel */;
+			path = QuestionCoreData.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = A73B9C0621CA50C50091D952 /* Project object */;
 }
